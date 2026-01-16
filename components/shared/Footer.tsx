@@ -176,9 +176,9 @@ export const Footer = ({ className }: { className?: string }) => {
                 <Image
                   src="/images/logo.png"
                   alt="Coppell Heating and Air Conditioning"
-                  width={140}
-                  height={68}
-                  className="h-10 w-auto"
+                  width={180}
+                  height={88}
+                  className="h-14 w-auto"
                 />
               </motion.div>
             </Link>

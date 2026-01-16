@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
-import { AnnouncementBar } from '@/components/shared/AnnouncementBar';
 import { services } from '@/data/content/services';
 import { testimonials } from '@/data/content/testimonials';
 import {
@@ -52,7 +51,6 @@ const scaleIn = {
 export default function Home() {
   return (
     <div className="flex flex-col w-full">
-      <AnnouncementBar />
       <Header />
 
       {/* Hero Section - Heatfix style */}

@@ -39,9 +39,9 @@ export const Header = ({ className }: { className?: string }) => {
               <Image
                 src="/images/logo.png"
                 alt="Coppell Heating and Air Conditioning"
-                width={160}
-                height={78}
-                className="h-12 w-auto"
+                width={200}
+                height={98}
+                className="h-16 w-auto"
                 priority
               />
             </motion.div>
