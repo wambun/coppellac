@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuIcon, X, ChevronDown } from 'lucide-react';
 import { headerNavLinks } from '@/data/config/headerNavLinks';
@@ -29,20 +30,20 @@ export const Header = ({ className }: { className?: string }) => {
     >
       <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
         <nav className="flex items-center justify-between h-[72px]">
-          {/* Logo - Heatfix style with X icon */}
-          <Link href="/" className="flex items-center gap-2 group">
+          {/* Logo */}
+          <Link href="/" className="flex items-center group">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2"
             >
-              {/* X Icon like Heatfix */}
-              <div className="relative">
-                <X className="w-6 h-6 text-primary-main stroke-[3]" />
-              </div>
-              <span className="font-bold text-[22px] text-[#3B3B3B] tracking-tight">
-                Coppell
-              </span>
+              <Image
+                src="/images/logo.png"
+                alt="Coppell Heating and Air Conditioning"
+                width={160}
+                height={78}
+                className="h-12 w-auto"
+                priority
+              />
             </motion.div>
           </Link>
 

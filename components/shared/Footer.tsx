@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, X } from 'lucide-react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { footerLinks } from '@/data/config/footerLinks';
 
 // Animation variants - matching Heatfix exactly
@@ -167,18 +168,18 @@ export const Footer = ({ className }: { className?: string }) => {
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href="/" className="flex items-center group">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2"
               >
-                <div className="relative">
-                  <X className="w-6 h-6 text-primary-main stroke-[3]" />
-                </div>
-                <span className="font-bold text-[22px] text-[#3B3B3B] tracking-tight">
-                  Coppell
-                </span>
+                <Image
+                  src="/images/logo.png"
+                  alt="Coppell Heating and Air Conditioning"
+                  width={140}
+                  height={68}
+                  className="h-10 w-auto"
+                />
               </motion.div>
             </Link>
 
