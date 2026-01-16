@@ -1,18 +1,19 @@
 /* Configure colors at https://shipixen.com/color-theme-explorer-shadcn */
+/* Coppell AC - Orange primary (matching Heatfix template) */
 const colors = {
   primary: {
-    lighter: '#fde047',
-    light: '#facc15',
-    main: '#eab308',
-    dark: '#ca8a04',
-    darker: '#a16207',
+    lighter: '#fed7aa',
+    light: '#fdba74',
+    main: '#f97316',
+    dark: '#ea580c',
+    darker: '#c2410c',
   },
   secondary: {
-    lighter: '#6ee7b7',
-    light: '#34d399',
-    main: '#10b981',
-    dark: '#059669',
-    darker: '#047857',
+    lighter: '#e0e7ff',
+    light: '#c7d2fe',
+    main: '#6366f1',
+    dark: '#4f46e5',
+    darker: '#4338ca',
   },
 };
 
