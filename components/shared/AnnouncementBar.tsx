@@ -2,46 +2,51 @@
 
 import { LandingMarquee } from '@/components/landing';
 import Link from 'next/link';
-import { PhoneIcon, SparklesIcon, ThermometerIcon } from 'lucide-react';
 
 const announcements = [
   {
-    text: '24/7 Emergency HVAC Repairs',
+    text: 'Breathe Easy — Duct Cleaning',
+    href: '/contact',
+    cta: '20% Off',
+    highlight: 'This Month!',
+  },
+  {
+    text: '24/7 Emergency HVAC Repairs —',
     href: 'tel:972-462-1882',
     cta: 'Call Now!',
-    icon: PhoneIcon,
   },
   {
-    text: 'AC Tune-Up Special',
+    text: 'AC Tune-Up Special:',
     href: '/special-offers',
     cta: 'Starting at $89!',
-    icon: SparklesIcon,
   },
   {
-    text: 'Free Estimates on New Systems',
+    text: 'Winter Prep Special: Furnace Checkup for',
     href: '/contact',
-    cta: 'Get Quote',
-    icon: ThermometerIcon,
+    cta: 'Just $59!',
   },
 ];
 
 export const AnnouncementBar = () => {
   return (
-    <div className="w-full bg-gray-900 text-white py-2">
+    <div className="w-full bg-gray-900 text-white overflow-hidden">
       <LandingMarquee
-        className="py-0"
-        innerClassName="gap-8"
-        animationDurationInSeconds={30}
+        className="py-3"
+        innerClassName="gap-0"
+        animationDurationInSeconds={40}
       >
         {announcements.map((item, index) => (
           <Link
             key={index}
             href={item.href}
-            className="flex items-center gap-2 px-6 text-sm hover:text-primary-light transition-colors whitespace-nowrap"
+            className="flex items-center gap-2 px-8 text-sm hover:opacity-80 transition-opacity whitespace-nowrap"
           >
-            <item.icon className="w-4 h-4 text-primary-main" />
-            <span>{item.text}</span>
-            <span className="text-primary-main font-semibold">{item.cta}</span>
+            <span className="text-white">{item.text}</span>
+            {item.highlight && (
+              <span className="text-white">{item.highlight}</span>
+            )}
+            <span className="text-primary-main font-semibold ml-1">{item.cta}</span>
+            <span className="mx-4 text-gray-600">•</span>
           </Link>
         ))}
       </LandingMarquee>
