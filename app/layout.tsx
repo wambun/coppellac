@@ -1,4 +1,4 @@
-import { Nunito_Sans } from 'next/font/google';
+import { Figtree, Inter } from 'next/font/google';
 import { siteConfig } from '@/data/config/site.settings';
 import { ThemeProviders } from './theme-providers';
 import { Metadata } from 'next';
@@ -9,16 +9,19 @@ import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 
-const displayFont = Nunito_Sans({
+// Heatfix uses Figtree as primary font
+const displayFont = Figtree({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-display',
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-const baseFont = Nunito_Sans({
+const baseFont = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-default',
+  weight: ['400', '500', '600', '700'],
 });
 
 const globalColors = colors;

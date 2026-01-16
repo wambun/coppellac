@@ -3,18 +3,36 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
 import { AnnouncementBar } from '@/components/shared/AnnouncementBar';
-import { Button } from '@/components/shared/ui/button';
 import {
-  PhoneIcon,
-  MailIcon,
-  MapPinIcon,
-  ClockIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ArrowRight,
+  CheckCircle,
 } from 'lucide-react';
+
+// Animation variants - matching Heatfix exactly
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -29,8 +47,8 @@ export default function ContactPage() {
       <AnnouncementBar />
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[400px] lg:min-h-[500px] flex items-center">
+      {/* Hero Section - Heatfix style */}
+      <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&auto=format&fit=crop&q=80"
@@ -39,80 +57,121 @@ export default function ContactPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent" />
         </div>
 
-        <div className="container-wide mx-auto px-6 relative z-10 py-20">
-          <div className="max-w-2xl">
-            <span className="text-primary-main font-semibold text-sm tracking-wide uppercase">
-              Contact Us
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4 leading-tight">
-              Get In Touch
-            </h1>
-            <p className="mt-6 text-lg text-gray-300 max-w-xl">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10 py-20">
+          <div className="max-w-[600px]">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-primary-main font-semibold text-[14px] tracking-wide uppercase"
+            >
+              — Contact Us
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-[#3B3B3B] mt-4 leading-[1.05] tracking-[-3px]"
+            >
+              Get In Touch{' '}
+              <span className="text-primary-main">Today.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-6 text-[17px] text-[#3B3B3B]/70 leading-[1.7] max-w-[480px]"
+            >
               Have questions about your HVAC system? Need a quick repair, maintenance service, or a custom consultation? We&apos;re here to help.
-            </p>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mt-8"
+            >
+              <Link
+                href="tel:972-462-1882"
+                className="inline-flex items-center gap-2 bg-[#3B3B3B] hover:bg-[#2a2a2a] text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
+              >
+                <Phone className="w-4 h-4" />
+                CALL (972) 462-1882
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Contact Content */}
       <section className="py-20 bg-white">
-        <div className="container-wide mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Contact Info */}
-            <div>
-              <span className="text-primary-main font-semibold text-sm tracking-wide uppercase">
-                Contact Information
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
+                — Contact Information
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-4 leading-tight">
+              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
                 Let&apos;s Talk About Your HVAC Needs
               </h2>
-              <p className="mt-6 text-gray-600 text-lg">
+              <p className="mt-6 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
                 Whether you have a question about our HVAC services, need emergency assistance, or want to schedule a routine maintenance visit, we&apos;re here to help.
               </p>
 
-              <div className="mt-10 space-y-6">
-                <div className="flex items-start gap-4">
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="mt-10 space-y-6"
+              >
+                <motion.div variants={fadeInUp} className="flex items-start gap-4">
                   <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <PhoneIcon className="w-7 h-7 text-primary-main" />
+                    <Phone className="w-7 h-7 text-primary-main" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">Phone</h3>
+                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Phone</h3>
                     <a
                       href="tel:972-462-1882"
-                      className="text-primary-main hover:text-primary-dark text-lg font-medium"
+                      className="text-primary-main hover:text-primary-dark text-[17px] font-medium"
                     >
                       (972) 462-1882
                     </a>
-                    <p className="text-sm text-gray-500 mt-1">24/7 Emergency Service Available</p>
+                    <p className="text-[14px] text-[#3B3B3B]/60 mt-1">24/7 Emergency Service Available</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
+                <motion.div variants={fadeInUp} className="flex items-start gap-4">
                   <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <MailIcon className="w-7 h-7 text-primary-main" />
+                    <Mail className="w-7 h-7 text-primary-main" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">Email</h3>
+                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Email</h3>
                     <a
                       href="mailto:service@coppellac.com"
                       className="text-primary-main hover:text-primary-dark font-medium"
                     >
                       service@coppellac.com
                     </a>
-                    <p className="text-sm text-gray-500 mt-1">We respond within 24 hours</p>
+                    <p className="text-[14px] text-[#3B3B3B]/60 mt-1">We respond within 24 hours</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
+                <motion.div variants={fadeInUp} className="flex items-start gap-4">
                   <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <MapPinIcon className="w-7 h-7 text-primary-main" />
+                    <MapPin className="w-7 h-7 text-primary-main" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">Office Address</h3>
-                    <p className="text-gray-600">
+                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Office Address</h3>
+                    <p className="text-[15px] text-[#3B3B3B]/70">
                       436 Southwestern Blvd.<br />
                       Coppell, Texas 75019 USA
                     </p>
@@ -120,59 +179,71 @@ export default function ContactPage() {
                       href="https://goo.gl/maps/qZeaD2udM7AuEPSVA"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary-main hover:text-primary-dark text-sm font-semibold mt-2 inline-flex items-center"
+                      className="text-primary-main hover:text-primary-dark text-[14px] font-semibold mt-2 inline-flex items-center"
                     >
                       Get Directions
-                      <ArrowRightIcon className="w-4 h-4 ml-1" />
+                      <ArrowRight className="w-4 h-4 ml-1" />
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
+                <motion.div variants={fadeInUp} className="flex items-start gap-4">
                   <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <ClockIcon className="w-7 h-7 text-primary-main" />
+                    <Clock className="w-7 h-7 text-primary-main" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">Business Hours</h3>
-                    <p className="text-gray-600">
+                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Business Hours</h3>
+                    <p className="text-[15px] text-[#3B3B3B]/70">
                       Monday - Friday: 8:00 AM - 5:00 PM<br />
                       Saturday: 9:00 AM - 2:00 PM<br />
                       Sunday: Closed
                     </p>
-                    <p className="text-sm text-primary-main font-semibold mt-2">
+                    <p className="text-[14px] text-primary-main font-semibold mt-2">
                       24/7 Emergency Service Available
                     </p>
                   </div>
-                </div>
-              </div>
-            </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="bg-[#f6f7f9] rounded-3xl p-8 lg:p-10">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-[#F6F7F9] rounded-[24px] p-8 lg:p-10"
+            >
+              <h3 className="text-[24px] font-bold text-[#3B3B3B] mb-6">Send Us a Message</h3>
 
               {formSubmitted ? (
-                <div className="text-center py-12">
-                  <CheckCircleIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Thank You!</h3>
-                  <p className="text-gray-600">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="text-[20px] font-bold text-[#3B3B3B] mb-2">Thank You!</h3>
+                  <p className="text-[15px] text-[#3B3B3B]/70">
                     We&apos;ve received your message and will get back to you within 24 hours.
                   </p>
-                  <Button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => setFormSubmitted(false)}
-                    className="mt-6 bg-primary-main hover:bg-primary-dark text-white rounded-2xl px-8 py-4 h-auto font-semibold"
+                    className="mt-6 bg-primary-main hover:bg-primary-dark text-white rounded-full px-8 py-3.5 font-semibold text-[15px] transition-colors"
                   >
                     Send Another Message
-                  </Button>
-                </div>
+                  </motion.button>
+                </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <input
                       type="text"
                       placeholder="Full Name *"
                       required
-                      className="w-full px-4 py-4 bg-white rounded-2xl border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all"
+                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px]"
                     />
                   </div>
                   <div>
@@ -180,7 +251,7 @@ export default function ContactPage() {
                       type="email"
                       placeholder="Email Address *"
                       required
-                      className="w-full px-4 py-4 bg-white rounded-2xl border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all"
+                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px]"
                     />
                   </div>
                   <div>
@@ -188,12 +259,12 @@ export default function ContactPage() {
                       type="tel"
                       placeholder="Phone Number *"
                       required
-                      className="w-full px-4 py-4 bg-white rounded-2xl border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all"
+                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px]"
                     />
                   </div>
                   <div>
                     <select
-                      className="w-full px-4 py-4 bg-white rounded-2xl border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-gray-500"
+                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px] text-[#3B3B3B]/60"
                       defaultValue=""
                     >
                       <option value="" disabled>Select Service Type</option>
@@ -210,59 +281,79 @@ export default function ContactPage() {
                       placeholder="Tell us about your HVAC needs... *"
                       required
                       rows={5}
-                      className="w-full px-4 py-4 bg-white rounded-2xl border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all resize-none"
+                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all resize-none text-[15px]"
                     />
                   </div>
-                  <Button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-primary-main hover:bg-primary-dark text-white rounded-2xl py-4 h-auto font-semibold text-base"
+                    className="w-full bg-primary-main hover:bg-primary-dark text-white rounded-full py-4 font-semibold text-[15px] transition-colors inline-flex items-center justify-center gap-2"
                   >
                     Send Message
-                    <ArrowRightIcon className="w-4 h-4 ml-2" />
-                  </Button>
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.button>
                 </form>
               )}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Quick Call CTA */}
       <section className="py-20 bg-primary-main">
-        <div className="container-wide mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            Need Immediate Assistance?
-          </h2>
-          <p className="mt-6 text-lg text-white/90 max-w-2xl mx-auto">
-            For emergencies, call us directly. Our team is available 24/7 to help with urgent HVAC issues.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-primary-main hover:bg-gray-100 rounded-2xl px-8 py-4 h-auto font-semibold"
-            >
-              <Link href="tel:972-462-1882">
-                <PhoneIcon className="w-5 h-5 mr-2" />
-                Call (972) 462-1882
-              </Link>
-            </Button>
-          </div>
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-white leading-[1.1] tracking-[-2px]">
+              Need Immediate Assistance?
+            </h2>
+            <p className="mt-6 text-[17px] text-white/90 max-w-[600px] mx-auto leading-[1.7]">
+              For emergencies, call us directly. Our team is available 24/7 to help with urgent HVAC issues.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center">
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  href="tel:972-462-1882"
+                  className="inline-flex items-center gap-2 bg-white text-primary-main px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call (972) 462-1882
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-[#f6f7f9]">
-        <div className="container-wide mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="text-primary-main font-semibold text-sm tracking-wide uppercase">
-              Our Location
+      <section className="py-20 bg-[#F6F7F9]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
+              — Our Location
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-4">
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
               Find Us
             </h2>
-          </div>
-          <div className="aspect-video bg-gray-300 rounded-3xl overflow-hidden">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="aspect-video bg-gray-300 rounded-[24px] overflow-hidden"
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.5!2d-96.98!3d32.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU3JzAwLjAiTiA5NsKwNTgnNDguMCJX!5e0!3m2!1sen!2sus!4v1234567890"
               width="100%"
@@ -273,7 +364,7 @@ export default function ContactPage() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Coppell Heating and Air Conditioning Location"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
