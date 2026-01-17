@@ -122,7 +122,7 @@ export default function FAQPage() {
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&auto=format&fit=crop&q=80"
+            src="/images/hvac-repair-25.jpg"
             alt="HVAC frequently asked questions"
             fill
             className="object-cover"
@@ -275,7 +275,7 @@ export default function FAQPage() {
             >
               <div className="rounded-[24px] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&auto=format&fit=crop&q=80"
+                  src="/images/ac-repair-5.jpg"
                   alt="HVAC technician ready to answer questions"
                   width={560}
                   height={400}

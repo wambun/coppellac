@@ -91,7 +91,7 @@ export default function FinancingPage() {
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1631545806609-35d4ae440431?w=1920&auto=format&fit=crop&q=80"
+            src="/images/hvac-repair-23.jpg"
             alt="HVAC financing options"
             fill
             className="object-cover"
@@ -232,7 +232,7 @@ export default function FinancingPage() {
             >
               <div className="rounded-[24px] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=80"
+                  src="/images/hvac-repair-1.png"
                   alt="Credit card payment"
                   width={560}
                   height={480}

@@ -108,7 +108,7 @@ export default function SpecialOffersPage() {
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1920&auto=format&fit=crop&q=80"
+            src="/images/hero/hvac-repair-hero.jpg"
             alt="HVAC special offers"
             fill
             className="object-cover"
@@ -265,7 +265,7 @@ export default function SpecialOffersPage() {
             >
               <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
-                  src="https://images.unsplash.com/photo-1631545806609-35d4ae440431?w=800&auto=format&fit=crop&q=80"
+                  src="/images/american-standard.webp"
                   alt="American Standard HVAC equipment"
                   width={560}
                   height={480}

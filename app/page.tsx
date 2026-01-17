@@ -57,11 +57,11 @@ export default function Home() {
 
       {/* Hero Section with Video Background */}
       <section className="relative min-h-[700px] lg:min-h-[800px] flex items-center pt-[72px] overflow-hidden">
-        {/* Video Background */}
+        {/* Hero Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1631545806609-35d4ae440431?w=1920&auto=format&fit=crop&q=80"
-            alt="Modern HVAC air conditioning unit"
+            src="/images/hero/hvac-repair-hero.jpg"
+            alt="Professional HVAC technician servicing air conditioning unit"
             fill
             className="object-cover"
             priority
@@ -251,7 +251,7 @@ export default function Home() {
             >
               <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
-                  src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&auto=format&fit=crop&q=80"
+                  src="/images/hvac-repair-18.jpg"
                   alt="HVAC technician servicing air conditioning unit"
                   width={560}
                   height={480}
@@ -468,7 +468,7 @@ export default function Home() {
                 {/* Service Image */}
                 <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
                   <Image
-                    src={`https://images.unsplash.com/photo-${index === 0 ? '1631545806609-35d4ae440431' : index === 1 ? '1558618666-fcd25c85cd64' : index === 2 ? '1585771724684-38269d6639fd' : '1562259929-b4e1fd3aef09'}?w=400&auto=format&fit=crop&q=80`}
+                    src={index === 0 ? '/images/hvac-repair-23.jpg' : index === 1 ? '/images/hvac-repair-25.jpg' : index === 2 ? '/images/ac-repair-5.jpg' : '/images/hvac-repair-1.png'}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"

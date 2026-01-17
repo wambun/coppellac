@@ -49,7 +49,7 @@ export default function ContactPage() {
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&auto=format&fit=crop&q=80"
+            src="/images/hero/hvac-repair-14.jpg"
             alt="HVAC customer service and support"
             fill
             className="object-cover"

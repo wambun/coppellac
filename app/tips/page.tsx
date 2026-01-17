@@ -86,7 +86,7 @@ export default function TipsPage() {
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&auto=format&fit=crop&q=80"
+            src="/images/hvac-repair-25.jpg"
             alt="HVAC tips and resources"
             fill
             className="object-cover"
@@ -348,7 +348,7 @@ export default function TipsPage() {
             >
               <div className="rounded-[24px] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1631545806609-35d4ae440431?w=800&auto=format&fit=crop&q=80"
+                  src="/images/hvac-repair-18.jpg"
                   alt="Energy efficient HVAC system"
                   width={560}
                   height={400}

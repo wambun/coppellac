@@ -48,7 +48,7 @@ export default function ServicesPage() {
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1920&auto=format&fit=crop&q=80"
+            src="/images/hero/hvac-repair-14.jpg"
             alt="Professional HVAC technician providing expert service"
             fill
             className="object-cover"
@@ -148,7 +148,7 @@ export default function ServicesPage() {
                 {/* Service Image */}
                 <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
                   <Image
-                    src={`https://images.unsplash.com/photo-${index === 0 ? '1631545806609-35d4ae440431' : index === 1 ? '1558618666-fcd25c85cd64' : index === 2 ? '1585771724684-38269d6639fd' : index === 3 ? '1562259929-b4e1fd3aef09' : index === 4 ? '1621905251189-08b45d6a269e' : index === 5 ? '1504328345606-18bbc8c9d7d1' : index === 6 ? '1581578731548-c64695cc6952' : '1621905252507-b35492cc74b4'}?w=400&auto=format&fit=crop&q=80`}
+                    src={index === 0 ? '/images/hvac-repair-23.jpg' : index === 1 ? '/images/hvac-repair-25.jpg' : index === 2 ? '/images/ac-repair-5.jpg' : index === 3 ? '/images/hvac-repair-1.png' : index === 4 ? '/images/hvac-repair-18.jpg' : index === 5 ? '/images/hero/hvac-repair-hero.jpg' : index === 6 ? '/images/hero/hvac-repair-14.jpg' : '/images/american-standard.webp'}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -240,7 +240,7 @@ export default function ServicesPage() {
             >
               <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
-                  src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&auto=format&fit=crop&q=80"
+                  src="/images/hvac-repair-23.jpg"
                   alt="Certified HVAC technician performing maintenance"
                   width={560}
                   height={480}

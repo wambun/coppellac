@@ -53,7 +53,7 @@ export default function AboutPage() {
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&auto=format&fit=crop&q=80"
+            src="/images/hvac-repair-23.jpg"
             alt="HVAC technician team working on air conditioning system"
             fill
             className="object-cover"
@@ -153,7 +153,7 @@ export default function AboutPage() {
             >
               <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
-                  src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&auto=format&fit=crop&q=80"
+                  src="/images/hvac-repair-18.jpg"
                   alt="HVAC technician servicing air conditioning unit"
                   width={560}
                   height={480}
@@ -355,7 +355,7 @@ export default function AboutPage() {
             >
               <div className="rounded-[24px] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1631545806609-35d4ae440431?w=800&auto=format&fit=crop&q=80"
+                  src="/images/hvac-repair-25.jpg"
                   alt="Modern HVAC air conditioning unit installation"
                   width={560}
                   height={480}
