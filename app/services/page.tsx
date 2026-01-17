@@ -136,17 +136,17 @@ export default function ServicesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {services.map((service) => (
               <motion.div
                 key={service.id}
                 variants={scaleIn}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="bg-white rounded-[20px] overflow-hidden group border border-gray-100"
+                className="bg-white rounded-[24px] overflow-hidden group border border-gray-100 shadow-sm hover:shadow-lg transition-shadow"
               >
                 {/* Service Image */}
-                <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
+                <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -154,18 +154,18 @@ export default function ServicesPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-5">
-                  <h3 className="text-[17px] font-bold text-navy-main group-hover:text-primary-main transition-colors">{service.title}</h3>
-                  <p className="mt-2 text-[14px] text-[#3B3B3B]/60 line-clamp-2">
+                <div className="p-6">
+                  <h3 className="text-[20px] font-bold text-navy-main group-hover:text-primary-main transition-colors">{service.title}</h3>
+                  <p className="mt-3 text-[15px] text-[#3B3B3B]/70 leading-relaxed">
                     {service.shortDescription}
                   </p>
                   <Link
                     href={service.href}
-                    className="inline-flex items-center gap-2 mt-4 text-[14px] font-semibold text-navy-main hover:text-primary-main transition-colors"
+                    className="inline-flex items-center gap-2 mt-5 text-[15px] font-semibold text-navy-main hover:text-primary-main transition-colors"
                   >
                     LEARN MORE
-                    <span className="w-5 h-5 bg-primary-main rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <ArrowRight className="w-3 h-3 text-white" />
+                    <span className="w-6 h-6 bg-primary-main rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <ArrowRight className="w-3.5 h-3.5 text-white" />
                     </span>
                   </Link>
                 </div>
