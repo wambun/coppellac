@@ -251,8 +251,8 @@ export default function Home() {
             >
               <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
-                  src="/images/hvac-repair-18.jpg"
-                  alt="HVAC technician servicing air conditioning unit"
+                  src="/images/who-we-are.jpg"
+                  alt="HVAC technician servicing air conditioning unit with refrigerant gauges"
                   width={560}
                   height={480}
                   className="w-full h-auto object-cover"
