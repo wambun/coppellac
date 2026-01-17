@@ -59,19 +59,13 @@ export default function Home() {
       <section className="relative min-h-[700px] lg:min-h-[800px] flex items-center pt-[72px] overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&auto=format&fit=crop&q=80"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/5532765/5532765-uhd_2560_1440_25fps.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <Image
+            src="https://images.unsplash.com/photo-1631545806609-35d4ae440431?w=1920&auto=format&fit=crop&q=80"
+            alt="Modern HVAC air conditioning unit"
+            fill
+            className="object-cover"
+            priority
+          />
           {/* Navy gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A5F]/95 via-[#1E3A5F]/80 to-[#1E3A5F]/60" />
         </div>
@@ -257,8 +251,8 @@ export default function Home() {
             >
               <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
-                  src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&auto=format&fit=crop&q=80"
-                  alt="HVAC technician"
+                  src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&auto=format&fit=crop&q=80"
+                  alt="HVAC technician servicing air conditioning unit"
                   width={560}
                   height={480}
                   className="w-full h-auto object-cover"
@@ -474,7 +468,7 @@ export default function Home() {
                 {/* Service Image */}
                 <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
                   <Image
-                    src={`https://images.unsplash.com/photo-${index === 0 ? '1585771724684-38269d6639fd' : index === 1 ? '1621905251189-08b45d6a269e' : index === 2 ? '1581578731548-c64695cc6952' : '1504328345606-18bbc8c9d7d1'}?w=400&auto=format&fit=crop&q=80`}
+                    src={`https://images.unsplash.com/photo-${index === 0 ? '1631545806609-35d4ae440431' : index === 1 ? '1558618666-fcd25c85cd64' : index === 2 ? '1585771724684-38269d6639fd' : '1562259929-b4e1fd3aef09'}?w=400&auto=format&fit=crop&q=80`}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
