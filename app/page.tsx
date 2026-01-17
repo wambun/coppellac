@@ -458,7 +458,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {services.slice(0, 4).map((service, index) => (
+            {services.slice(0, 4).map((service) => (
               <motion.div
                 key={service.id}
                 variants={scaleIn}
@@ -468,19 +468,11 @@ export default function Home() {
                 {/* Service Image */}
                 <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
                   <Image
-                    src={index === 0 ? '/images/hvac-repair-23.jpg' : index === 1 ? '/images/hvac-repair-25.jpg' : index === 2 ? '/images/ac-repair-5.jpg' : '/images/hvac-repair-1.png'}
+                    src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Discount Badge */}
-                  {service.discount && (
-                    <div className="absolute top-4 right-4 bg-secondary-main rounded-xl px-3 py-2 shadow-md">
-                      <span className="text-[18px] font-bold text-white">{service.discount.replace('%', '')}</span>
-                      <span className="text-[12px] font-bold text-white">%</span>
-                      <p className="text-[10px] font-semibold text-white/80">OFF</p>
-                    </div>
-                  )}
                 </div>
                 <div className="p-5">
                   <h3 className="text-[17px] font-bold text-[#1E3A5F] group-hover:text-primary-main transition-colors">{service.title}</h3>
@@ -488,10 +480,10 @@ export default function Home() {
                     {service.shortDescription}
                   </p>
                   <Link
-                    href="/contact"
+                    href={service.href}
                     className="inline-flex items-center gap-2 mt-4 text-[14px] font-semibold text-[#1E3A5F] hover:text-primary-main transition-colors"
                   >
-                    BOOK NOW
+                    LEARN MORE
                     <span className="w-5 h-5 bg-primary-main rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                       <ArrowRight className="w-3 h-3 text-white" />
                     </span>
