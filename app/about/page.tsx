@@ -355,8 +355,8 @@ export default function AboutPage() {
             >
               <div className="rounded-[24px] overflow-hidden">
                 <Image
-                  src="/images/hvac-repair-25.jpg"
-                  alt="Modern HVAC air conditioning unit installation"
+                  src="/images/hvac-expertise.jpg"
+                  alt="HVAC technician servicing commercial air conditioning unit"
                   width={560}
                   height={480}
                   className="w-full h-auto object-cover"
