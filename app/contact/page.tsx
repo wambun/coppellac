@@ -354,24 +354,57 @@ export default function ContactPage() {
             <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
               Find Us
             </h2>
+            <p className="mt-4 text-[16px] text-[#3B3B3B]/70 max-w-[600px] mx-auto">
+              Visit our office or give us a call. We proudly serve Coppell and the surrounding DFW area.
+            </p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="aspect-video bg-gray-300 rounded-[24px] overflow-hidden"
+            className="rounded-[24px] overflow-hidden shadow-lg"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.5!2d-96.98!3d32.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU3JzAwLjAiTiA5NsKwNTgnNDguMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.1234567890123!2d-97.00669548481234!3d32.94909478089012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c29589ce3168f%3A0xbc88f526140d7bd1!2sCoppell%20Heating%20and%20Air%20Conditioning!5e0!3m2!1sen!2sus!4v1705412400000!5m2!1sen!2sus"
               width="100%"
-              height="100%"
+              height="450"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Coppell Heating and Air Conditioning Location"
+              className="w-full"
             />
+          </motion.div>
+          {/* Address Card Overlay */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-8 bg-white rounded-[20px] p-6 shadow-lg border border-gray-100 max-w-xl mx-auto"
+          >
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-navy-main rounded-xl flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-[16px] text-navy-main">Coppell Heating and Air Conditioning</h3>
+                  <p className="text-[14px] text-[#3B3B3B]/70">436 Southwestern Blvd, Coppell, TX 75019</p>
+                </div>
+              </div>
+              <a
+                href="https://www.google.com/maps/dir//Coppell+Heating+and+Air+Conditioning,+436+Southwestern+Blvd,+Coppell,+TX+75019"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-5 py-2.5 rounded-full text-[14px] font-semibold transition-colors"
+              >
+                Get Directions
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
