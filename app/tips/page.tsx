@@ -1,225 +1,446 @@
+'use client';
+
 import Link from 'next/link';
-import { Metadata } from 'next';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
-import { AnnouncementBar } from '@/components/shared/AnnouncementBar';
-import { Button } from '@/components/shared/ui/button';
-import { LandingPrimaryTextCtaSection } from '@/components/landing';
 import {
-  PhoneIcon,
-  ArrowRightIcon,
-  LightbulbIcon,
-  ThermometerIcon,
-  FilterIcon,
-  LeafIcon,
-  ShieldCheckIcon,
-  ClockIcon,
-  CheckCircleIcon,
+  ArrowRight,
+  Phone,
+  ThermometerSun,
+  Wind,
+  AlertTriangle,
+  Snowflake,
+  Flame,
+  Home,
+  CheckCircle,
+  Lightbulb,
 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'AC Tips & Resources',
-  description: 'Helpful air conditioning and heating tips from Coppell HVAC experts. Learn how to maintain your system, save energy, and improve comfort.',
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
 };
 
-const tips = [
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+const acWarningSymptoms = [
+  'Decreased airflow from the registers',
+  'Strange noises coming from the air conditioner',
+  'Moldy odors coming from the ductwork when the air conditioner is running',
+  'The air conditioner cycles on and off more frequently than it used to',
+  'The breaker for the air conditioner in the electrical panel keeps tripping',
+  'Ice appears on your air conditioner or piping, either inside or outside the house',
+  'Your outdoor fan in the air conditioner won\'t come on',
+];
+
+const winterHeatingTips = [
   {
-    icon: <FilterIcon className="w-8 h-8" />,
-    title: 'Change Your Air Filter Regularly',
-    description: 'One of the simplest yet most important maintenance tasks. A dirty filter restricts airflow and makes your system work harder, increasing energy costs and wear.',
-    tips: [
-      'Check your filter monthly',
-      'Replace every 1-3 months depending on usage',
-      'Consider HEPA filters for better air quality',
-      'Set a reminder on your phone or calendar',
-    ],
+    icon: Home,
+    title: 'Seal Your Home',
+    description: 'Do not let your heat escape! Make sure all your doors and windows are shut tightly. Check for leaks, and replace old weather stripping or caulk.',
   },
   {
-    icon: <ThermometerIcon className="w-8 h-8" />,
-    title: 'Program Your Thermostat',
-    description: 'A programmable thermostat can save you up to 10% on heating and cooling costs annually by automatically adjusting temperatures when you\'re away or asleep.',
-    tips: [
-      'Set temperature back 7-10°F when away',
-      'Consider a smart thermostat for more savings',
-      'Don\'t set the temperature too low in summer',
-      'Aim for 78°F in summer, 68°F in winter',
-    ],
+    icon: ThermometerSun,
+    title: 'Use Window Shades',
+    description: 'Use your window shades and drapes to maximize heating benefits. Keep shades closed at night to conserve heat. During the day, open shades to let the sunlight in.',
   },
   {
-    icon: <LeafIcon className="w-8 h-8" />,
-    title: 'Keep Your Outdoor Unit Clear',
-    description: 'Your outdoor AC unit needs proper airflow to work efficiently. Debris, plants, and obstructions can reduce efficiency and lead to breakdowns.',
-    tips: [
-      'Maintain 2 feet of clearance around the unit',
-      'Remove leaves, grass, and debris regularly',
-      'Trim back shrubs and plants',
-      'Never stack items against the unit',
-    ],
+    icon: Wind,
+    title: 'Add Humidity',
+    description: 'Humid air feels warmer than dry air. Increasing the humidity of your home also helps you resist winter colds and moisturizes dry skin. Ask us about Humidifiers!',
   },
   {
-    icon: <ShieldCheckIcon className="w-8 h-8" />,
-    title: 'Schedule Annual Maintenance',
-    description: 'Professional maintenance catches small problems before they become expensive repairs. It also keeps your system running at peak efficiency.',
-    tips: [
-      'Schedule AC tune-up in spring',
-      'Schedule heating tune-up in fall',
-      'Ask about maintenance agreements',
-      'Keep records of all service visits',
-    ],
-  },
-  {
-    icon: <ClockIcon className="w-8 h-8" />,
-    title: 'Don\'t Ignore Warning Signs',
-    description: 'Strange noises, unusual smells, or inconsistent temperatures are signs that something may be wrong. Addressing issues early prevents costly repairs.',
-    tips: [
-      'Listen for unusual sounds',
-      'Notice if rooms aren\'t cooling/heating evenly',
-      'Check for unusual odors from vents',
-      'Monitor your energy bills for spikes',
-    ],
-  },
-  {
-    icon: <LightbulbIcon className="w-8 h-8" />,
-    title: 'Seal Air Leaks',
-    description: 'Air leaks around windows, doors, and ductwork can significantly increase your energy costs and make your system work harder.',
-    tips: [
-      'Check weatherstripping on doors and windows',
-      'Seal gaps with caulk or weatherstripping',
-      'Have ductwork inspected for leaks',
-      'Add insulation to your attic',
-    ],
+    icon: AlertTriangle,
+    title: 'Clean Your Filter',
+    description: 'Keep your furnace air filter clean. A dirty or clogged filter can make your furnace work harder, which costs you more.',
   },
 ];
 
 export default function TipsPage() {
   return (
     <div className="flex flex-col w-full">
-      <AnnouncementBar />
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
-        <div className="container-wide px-6">
-          <div className="max-w-3xl">
-            <span className="text-primary-main font-semibold text-sm tracking-wide uppercase">
-              — AC Tips & Resources
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold mt-4">
-              Helpful Air Conditioning Tips
-            </h1>
-            <p className="mt-6 text-lg text-gray-300">
+      {/* Hero Section - Navy gradient style */}
+      <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&auto=format&fit=crop&q=80"
+            alt="HVAC tips and resources"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-main/95 via-navy-main/85 to-navy-main/70" />
+        </div>
+
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10 py-20">
+          <div className="max-w-[600px]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+            >
+              <span className="w-2 h-2 bg-primary-main rounded-full animate-pulse" />
+              <span className="text-white/90 text-[14px] font-medium">A/C Tips</span>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-white mt-4 leading-[1.05] tracking-[-3px]"
+            >
+              Helpful HVAC{' '}
+              <span className="text-primary-main">Tips.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-6 text-[17px] text-white/80 leading-[1.7] max-w-[480px]"
+            >
               Keep your HVAC system running smoothly with these expert tips from Coppell Heating and Air Conditioning. A well-maintained system saves money, improves comfort, and lasts longer.
-            </p>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 mt-8"
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
+              >
+                SCHEDULE SERVICE
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="tel:972-462-1882"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                (972) 462-1882
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Tips Grid */}
-      <section className="py-20 w-full">
-        <div className="container-wide px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {tips.map((tip, idx) => (
-              <div
-                key={idx}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all border border-gray-100 dark:border-gray-700"
-              >
-                <div className="w-14 h-14 bg-primary-main/10 rounded-xl flex items-center justify-center text-primary-main mb-6">
-                  {tip.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{tip.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {tip.description}
-                </p>
-                <ul className="space-y-2">
-                  {tip.tips.map((item, tidx) => (
-                    <li key={tidx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <CheckCircleIcon className="w-4 h-4 text-primary-main flex-shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+      {/* AC Warning Signs Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="w-16 h-16 bg-secondary-main rounded-2xl flex items-center justify-center mb-6">
+                <AlertTriangle className="w-8 h-8 text-white" />
               </div>
-            ))}
+              <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
+                — Warning Signs
+              </span>
+              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
+                When to Call for A/C Service
+              </h2>
+              <p className="mt-6 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
+                When you have a big air conditioning problem - like an air conditioner that quits during the hottest day of summer - it goes without saying that you&apos;ll call for service. Smaller air conditioning problems are easier to ignore, but this is the last thing you should do.
+              </p>
+              <p className="mt-4 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
+                By calling for service as soon as you notice the symptoms of an ailing cooling system, you can prevent the expense and inconvenience of a big repair job.
+              </p>
+            </motion.div>
+
+            {/* Warning Signs List */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="bg-[#F6F7F9] rounded-[24px] p-8">
+                <h3 className="text-[20px] font-bold text-navy-main mb-6">
+                  Call Us When You Notice:
+                </h3>
+                <motion.ul
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="space-y-4"
+                >
+                  {acWarningSymptoms.map((symptom, index) => (
+                    <motion.li
+                      key={index}
+                      variants={fadeInUp}
+                      className="flex items-start gap-3"
+                    >
+                      <CheckCircle className="w-5 h-5 text-secondary-main mt-0.5 flex-shrink-0" />
+                      <span className="text-[15px] text-[#3B3B3B]/80">{symptom}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Winter Heating Tips */}
+      <section className="py-20 bg-navy-main">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="w-16 h-16 bg-secondary-main rounded-2xl flex items-center justify-center mb-6 mx-auto">
+              <Flame className="w-8 h-8 text-white" />
+            </div>
+            <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
+              — Winter Tips
+            </span>
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-white mt-4 leading-[1.1] tracking-[-2px]">
+              Winter Heating Tips
+            </h2>
+            <p className="mt-4 text-[16px] text-white/70 max-w-[600px] mx-auto">
+              Stay warm and save money on your heating bills with these expert tips.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {winterHeatingTips.map((tip, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-[20px] p-8"
+              >
+                <div className="w-14 h-14 bg-primary-main rounded-2xl flex items-center justify-center mb-6">
+                  <tip.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-[18px] font-bold text-white mb-3">{tip.title}</h3>
+                <p className="text-[15px] text-white/70 leading-[1.7]">{tip.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[20px] p-8"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 bg-secondary-main rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Home className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-[18px] font-bold text-white mb-2">Don&apos;t Forget the Attic!</h3>
+                <p className="text-[15px] text-white/70 leading-[1.7]">
+                  Much of the heat escaping homes is lost through the attic. Be sure to close off any attic vents or fans during the winter and check on how well the attic is insulated. Our technicians can help!
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Summer Cooling Tips */}
+      <section className="py-20 bg-gradient-to-b from-white to-[#F6F7F9]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="w-16 h-16 bg-primary-main rounded-2xl flex items-center justify-center mb-6 mx-auto">
+              <Snowflake className="w-8 h-8 text-white" />
+            </div>
+            <span className="text-secondary-main font-semibold text-[14px] tracking-wide uppercase">
+              — Summer Tips
+            </span>
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
+              Summer Cooling Tips
+            </h2>
+            <p className="mt-4 text-[16px] text-[#3B3B3B]/70 max-w-[600px] mx-auto">
+              Keep your home cool and comfortable during the Texas summer heat.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {[
+              'Change your air filter monthly during heavy use',
+              'Keep your outdoor unit clear of debris',
+              'Use ceiling fans to circulate cool air',
+              'Close blinds during the hottest part of the day',
+              'Set your thermostat to 78°F when home',
+              'Schedule annual maintenance before summer',
+              'Seal air leaks around doors and windows',
+              'Use exhaust fans in kitchens and bathrooms',
+              'Consider upgrading to a programmable thermostat',
+            ].map((tip, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="flex items-start gap-3 bg-white rounded-[16px] p-5 shadow-sm border border-gray-100"
+              >
+                <CheckCircle className="w-5 h-5 text-primary-main mt-0.5 flex-shrink-0" />
+                <span className="text-[15px] text-navy-main font-medium">{tip}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Energy Saving Tips */}
-      <section className="bg-gray-50 dark:bg-gray-900 py-16">
-        <div className="container-wide px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <LightbulbIcon className="w-12 h-12 text-primary-main mx-auto mb-4" />
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Quick Energy Saving Tips
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-4 mt-8 text-left">
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-                <p className="text-sm">Use ceiling fans to circulate air and feel cooler</p>
+      <section className="py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="rounded-[24px] overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1631545806609-35d4ae440431?w=800&auto=format&fit=crop&q=80"
+                  alt="Energy efficient HVAC system"
+                  width={560}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-                <p className="text-sm">Close blinds during the hottest part of the day</p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-                <p className="text-sm">Don&apos;t block vents with furniture or curtains</p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-                <p className="text-sm">Use exhaust fans in kitchens and bathrooms</p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-                <p className="text-sm">Consider upgrading to energy-efficient equipment</p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-                <p className="text-sm">Have your ductwork inspected for leaks</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </motion.div>
 
-      {/* Need Help CTA */}
-      <section className="py-16">
-        <div className="container-wide px-6">
-          <div className="bg-primary-main rounded-3xl p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Need Professional Help?
-            </h2>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-              Some HVAC issues require professional attention. If you&apos;re experiencing problems or need maintenance, our certified technicians are here to help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-primary-main hover:bg-gray-100 gap-2 rounded-full px-8">
-                <Link href="/contact">
-                  Schedule Service
-                  <ArrowRightIcon className="w-4 h-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="gap-2 rounded-full px-8 border-white text-white hover:bg-white hover:text-primary-main">
-                <Link href="tel:972-462-1882">
-                  <PhoneIcon className="w-4 h-4" />
-                  (972) 462-1882
-                </Link>
-              </Button>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="w-16 h-16 bg-primary-main/10 rounded-2xl flex items-center justify-center mb-6">
+                <Lightbulb className="w-8 h-8 text-primary-main" />
+              </div>
+              <h2 className="text-[36px] md:text-[44px] font-bold text-navy-main leading-[1.1] tracking-[-2px]">
+                Energy Saving Tips
+              </h2>
+              <p className="mt-4 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
+                Small changes can add up to big savings on your energy bills. Here are some simple ways to reduce your HVAC costs.
+              </p>
+
+              <motion.ul
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="mt-8 space-y-4"
+              >
+                {[
+                  'Use a programmable thermostat to save up to 10% annually',
+                  'Set temperature back 7-10°F when away from home',
+                  'Keep vents unobstructed by furniture or curtains',
+                  'Have your ductwork inspected for leaks',
+                  'Consider upgrading to energy-efficient equipment',
+                  'Schedule regular maintenance to keep efficiency high',
+                ].map((tip, index) => (
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex items-start gap-3"
+                  >
+                    <CheckCircle className="w-5 h-5 text-primary-main mt-0.5 flex-shrink-0" />
+                    <span className="text-[15px] text-[#3B3B3B]/80">{tip}</span>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <LandingPrimaryTextCtaSection
-        className="bg-gray-900 text-white"
-        title="Questions About Your HVAC System?"
-        description="Our experts are here to help. Contact us for personalized advice and professional service."
-        textPosition="center"
-      >
-        <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
-          <Button asChild size="lg" className="bg-primary-main hover:bg-primary-dark text-white gap-2 rounded-full px-8">
-            <Link href="/faq">
-              View FAQ
-              <ArrowRightIcon className="w-4 h-4" />
-            </Link>
-          </Button>
+      <section className="py-20 bg-gradient-to-r from-secondary-main via-secondary-dark to-navy-main">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-white leading-[1.1] tracking-[-2px]">
+              Need Professional Help?
+            </h2>
+            <p className="mt-6 text-[17px] text-white/70 max-w-[600px] mx-auto leading-[1.7]">
+              Some HVAC issues require professional attention. If you&apos;re experiencing problems or need maintenance, our certified technicians are here to help.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center">
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-light text-white px-7 py-4 rounded-full text-[15px] font-semibold transition-colors"
+                >
+                  Schedule Service
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  href="tel:972-462-1882"
+                  className="inline-flex items-center gap-2 bg-white text-navy-main px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
+                >
+                  <Phone className="w-4 h-4" />
+                  (972) 462-1882
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-      </LandingPrimaryTextCtaSection>
+      </section>
 
       <Footer />
     </div>

@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MenuIcon, X, ChevronDown } from 'lucide-react';
-import { headerNavLinks } from '@/data/config/headerNavLinks';
+import { MenuIcon, X, ChevronDown, Phone } from 'lucide-react';
+import { headerNavLinks, NavLink } from '@/data/config/headerNavLinks';
 
 export const Header = ({ className }: { className?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,118 @@ export const Header = ({ className }: { className?: string }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const renderNavLink = (link: NavLink, index: number) => {
+    if (link.children) {
+      return (
+        <div
+          key={link.title}
+          className="relative"
+          onMouseEnter={() => setOpenDropdown(link.title)}
+          onMouseLeave={() => setOpenDropdown(null)}
+        >
+          <button className="flex items-center gap-1 px-4 py-2 text-[15px] text-[#3B3B3B] font-medium hover:text-primary-main transition-colors">
+            {link.title}
+            <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`} />
+          </button>
+          <AnimatePresence>
+            {openDropdown === link.title && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 mt-1 w-48 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50"
+              >
+                {link.children.map((child) => (
+                  <Link
+                    key={child.href}
+                    href={child.href}
+                    className="block px-4 py-3 text-[14px] text-[#3B3B3B] font-medium hover:text-primary-main hover:bg-gray-50 transition-colors"
+                  >
+                    {child.title}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      );
+    }
+
+    return (
+      <Link
+        key={link.href}
+        href={link.href}
+        className="px-4 py-2 text-[15px] text-[#3B3B3B] font-medium hover:text-primary-main transition-colors"
+      >
+        {link.title}
+      </Link>
+    );
+  };
+
+  const renderMobileNavLink = (link: NavLink, index: number) => {
+    if (link.children) {
+      return (
+        <motion.div
+          key={link.title}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.1 }}
+        >
+          <button
+            onClick={() => setMobileDropdown(mobileDropdown === link.title ? null : link.title)}
+            className="w-full flex items-center justify-between px-4 py-3 text-[#3B3B3B] font-medium hover:text-primary-main hover:bg-gray-50 rounded-xl transition-colors"
+          >
+            {link.title}
+            <ChevronDown className={`w-4 h-4 transition-transform ${mobileDropdown === link.title ? 'rotate-180' : ''}`} />
+          </button>
+          <AnimatePresence>
+            {mobileDropdown === link.title && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden bg-gray-50 rounded-xl ml-4 mr-4"
+              >
+                {link.children.map((child) => (
+                  <Link
+                    key={child.href}
+                    href={child.href}
+                    className="block px-4 py-3 text-[14px] text-[#3B3B3B] font-medium hover:text-primary-main transition-colors"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setMobileDropdown(null);
+                    }}
+                  >
+                    {child.title}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      );
+    }
+
+    return (
+      <motion.div
+        key={link.href}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        <Link
+          href={link.href}
+          className="block px-4 py-3 text-[#3B3B3B] font-medium hover:text-primary-main hover:bg-gray-50 rounded-xl transition-colors"
+          onClick={() => setIsOpen(false)}
+        >
+          {link.title}
+        </Link>
+      </motion.div>
+    );
+  };
 
   return (
     <motion.header
@@ -47,39 +161,30 @@ export const Header = ({ className }: { className?: string }) => {
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation - Centered */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            {/* All Pages Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center gap-1 px-4 py-2 text-[15px] text-[#3B3B3B] font-medium hover:text-primary-main transition-colors">
-                All Pages
-                <ChevronDown className="w-4 h-4" />
-              </button>
-            </div>
-
-            {headerNavLinks.slice(1, 3).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2 text-[15px] text-[#3B3B3B] font-medium hover:text-primary-main transition-colors"
-              >
-                {link.title}
-              </Link>
-            ))}
+            {headerNavLinks.map((link, index) => renderNavLink(link, index))}
           </div>
 
-          {/* CTA Button - Heatfix style */}
-          <div className="hidden lg:flex items-center">
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Link
+              href="tel:972-462-1882"
+              className="flex items-center gap-2 text-[15px] text-[#3B3B3B] font-medium hover:text-primary-main transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              (972) 462-1882
+            </Link>
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               <Link
                 href="/contact"
-                className="flex items-center gap-2 bg-[#3B3B3B] hover:bg-[#2a2a2a] text-white px-5 py-2.5 rounded-full text-[14px] font-semibold transition-colors"
+                className="flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-5 py-2.5 rounded-full text-[14px] font-semibold transition-colors"
               >
-                CONTACT US
-                <span className="w-5 h-5 bg-primary-main rounded-full flex items-center justify-center">
+                GET A QUOTE
+                <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                     <path d="M1 9L9 1M9 1H3M9 1V7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -112,23 +217,10 @@ export const Header = ({ className }: { className?: string }) => {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden overflow-hidden"
             >
-              <div className="flex flex-col gap-2 pb-6">
-                {headerNavLinks.map((link, index) => (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Link
-                      href={link.href}
-                      className="block px-4 py-3 text-[#3B3B3B] font-medium hover:text-primary-main hover:bg-gray-50 rounded-xl transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {link.title}
-                    </Link>
-                  </motion.div>
-                ))}
+              <div className="flex flex-col gap-1 pb-6">
+                {headerNavLinks.map((link, index) => renderMobileNavLink(link, index))}
+
+                {/* Mobile Phone */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -136,12 +228,29 @@ export const Header = ({ className }: { className?: string }) => {
                   className="mt-2 px-4"
                 >
                   <Link
-                    href="/contact"
-                    className="flex items-center justify-center gap-2 bg-[#3B3B3B] text-white px-5 py-3 rounded-full text-[14px] font-semibold w-full"
+                    href="tel:972-462-1882"
+                    className="flex items-center justify-center gap-2 border border-gray-200 text-[#3B3B3B] px-5 py-3 rounded-full text-[14px] font-semibold w-full"
                     onClick={() => setIsOpen(false)}
                   >
-                    CONTACT US
-                    <span className="w-5 h-5 bg-primary-main rounded-full flex items-center justify-center">
+                    <Phone className="w-4 h-4" />
+                    (972) 462-1882
+                  </Link>
+                </motion.div>
+
+                {/* Mobile CTA */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (headerNavLinks.length + 1) * 0.1 }}
+                  className="mt-2 px-4"
+                >
+                  <Link
+                    href="/contact"
+                    className="flex items-center justify-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-5 py-3 rounded-full text-[14px] font-semibold w-full transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    GET A QUOTE
+                    <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
                       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                         <path d="M1 9L9 1M9 1H3M9 1V7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
