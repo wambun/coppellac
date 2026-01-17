@@ -49,7 +49,7 @@ export default function AboutPage() {
     <div className="flex flex-col w-full">
       <Header />
 
-      {/* Hero Section - Heatfix style */}
+      {/* Hero Section - Navy gradient style */}
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
@@ -59,24 +59,25 @@ export default function AboutPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-main/95 via-navy-main/85 to-navy-main/70" />
         </div>
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10 py-20">
           <div className="max-w-[600px]">
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-primary-main font-semibold text-[14px] tracking-wide uppercase"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             >
-              — About Us
-            </motion.span>
+              <span className="w-2 h-2 bg-primary-main rounded-full animate-pulse" />
+              <span className="text-white/90 text-[14px] font-medium">About Us</span>
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-[#3B3B3B] mt-4 leading-[1.05] tracking-[-3px]"
+              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-white mt-4 leading-[1.05] tracking-[-3px]"
             >
               Your Trusted HVAC Partner Since{' '}
               <span className="text-primary-main">1983.</span>
@@ -85,7 +86,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 text-[17px] text-[#3B3B3B]/70 leading-[1.7] max-w-[480px]"
+              className="mt-6 text-[17px] text-white/80 leading-[1.7] max-w-[480px]"
             >
               At Coppell Heating and Air Conditioning, we believe that every home and business deserves perfect comfort. Family-owned and operated for over 40 years.
             </motion.p>
@@ -97,10 +98,10 @@ export default function AboutPage() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-[#3B3B3B] hover:bg-[#2a2a2a] text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
+                className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
               >
                 GET IN TOUCH
-                <span className="w-6 h-6 bg-primary-main rounded-full flex items-center justify-center">
+                <span className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </Link>
@@ -120,17 +121,17 @@ export default function AboutPage() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
-              { value: '40+', label: 'Years of Experience' },
-              { value: '10,000+', label: 'Happy Customers' },
-              { value: '4.9/5', label: 'Customer Rating' },
-              { value: '24/7', label: 'Emergency Service' },
+              { value: '40+', label: 'Years of Experience', color: 'text-primary-main' },
+              { value: '10,000+', label: 'Happy Customers', color: 'text-secondary-main' },
+              { value: '4.9/5', label: 'Customer Rating', color: 'text-navy-main' },
+              { value: '24/7', label: 'Emergency Service', color: 'text-primary-main' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
                 className="text-center"
               >
-                <p className="text-[42px] md:text-[52px] font-bold text-primary-main leading-none">{stat.value}</p>
+                <p className={`text-[42px] md:text-[52px] font-bold ${stat.color} leading-none`}>{stat.value}</p>
                 <p className="mt-2 text-[15px] text-[#3B3B3B]/60">{stat.label}</p>
               </motion.div>
             ))}
@@ -139,7 +140,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section - Image Left, Content Right */}
-      <section className="py-20 bg-[#F6F7F9]">
+      <section className="py-20 bg-navy-main">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image with floating card */}
@@ -150,7 +151,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="rounded-[24px] overflow-hidden">
+              <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&auto=format&fit=crop&q=80"
                   alt="HVAC professional at work"
@@ -174,7 +175,7 @@ export default function AboutPage() {
                   </div>
                   <div className="w-px h-14 bg-gray-200" />
                   <div className="text-center">
-                    <p className="text-[32px] font-bold text-primary-main leading-none">1000+</p>
+                    <p className="text-[32px] font-bold text-secondary-main leading-none">1000+</p>
                     <p className="text-[13px] text-[#3B3B3B]/60 mt-1">Happy Clients</p>
                   </div>
                 </div>
@@ -191,13 +192,13 @@ export default function AboutPage() {
               <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
                 — Our Story
               </span>
-              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
+              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-white mt-4 leading-[1.1] tracking-[-2px]">
                 A Family Legacy of Comfort
               </h2>
-              <p className="mt-6 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
+              <p className="mt-6 text-[16px] text-white/70 leading-[1.8]">
                 Founded in 1983, Coppell Heating and Air Conditioning, Inc. has been a cornerstone of the Coppell community for over four decades. What started as a small family business has grown into a trusted name in HVAC services.
               </p>
-              <p className="mt-4 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
+              <p className="mt-4 text-[16px] text-white/70 leading-[1.8]">
                 As a family-owned business, we prioritize the needs of our community. When you give us a call, you receive the full breadth of our expertise. Whether you need a new air conditioner or a furnace repair, we&apos;ve got you covered.
               </p>
               <motion.div
@@ -207,12 +208,10 @@ export default function AboutPage() {
               >
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 text-[15px] font-semibold text-[#3B3B3B] hover:text-primary-main transition-colors"
+                  className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-colors"
                 >
                   View our services
-                  <span className="w-6 h-6 bg-primary-main rounded-full flex items-center justify-center">
-                    <ArrowRight className="w-3.5 h-3.5 text-white" />
-                  </span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -253,16 +252,19 @@ export default function AboutPage() {
                 icon: ShieldCheck,
                 title: 'Pure Integrity',
                 description: 'We believe in honest, transparent service. No hidden fees, no unnecessary upsells — just straightforward solutions to your HVAC needs.',
+                color: 'bg-primary-main',
               },
               {
                 icon: Award,
                 title: 'True Quality',
                 description: 'We use only the best equipment and parts, backed by manufacturer warranties. Our technicians are certified and continuously trained.',
+                color: 'bg-secondary-main',
               },
               {
                 icon: Heart,
                 title: 'Client First',
                 description: 'Your comfort and satisfaction are our top priorities. We listen to your needs and provide personalized solutions that fit your budget.',
+                color: 'bg-navy-main',
               },
             ].map((value, index) => (
               <motion.div
@@ -271,10 +273,10 @@ export default function AboutPage() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="bg-[#F6F7F9] rounded-[20px] p-8"
               >
-                <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center mb-6">
-                  <value.icon className="w-7 h-7 text-primary-main" />
+                <div className={`w-14 h-14 ${value.color} rounded-2xl flex items-center justify-center mb-6`}>
+                  <value.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-[18px] font-bold text-[#3B3B3B] mb-3">{value.title}</h3>
+                <h3 className="text-[18px] font-bold text-navy-main mb-3">{value.title}</h3>
                 <p className="text-[15px] text-[#3B3B3B]/70 leading-[1.7]">{value.description}</p>
               </motion.div>
             ))}
@@ -424,7 +426,7 @@ export default function AboutPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-[#F6F7F9]">
+      <section className="py-20 bg-gradient-to-b from-white to-[#F6F7F9]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -436,7 +438,7 @@ export default function AboutPage() {
             <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
               — Testimonials
             </span>
-            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
               What Our Customers Say
             </h2>
           </motion.div>
@@ -452,13 +454,13 @@ export default function AboutPage() {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="bg-white rounded-[20px] p-7"
+                className="bg-white rounded-[20px] p-7 shadow-lg border border-gray-100"
               >
                 <div className="flex gap-1 mb-4">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star
                       key={star}
-                      className="w-5 h-5 text-primary-main fill-primary-main"
+                      className="w-5 h-5 text-yellow-400 fill-yellow-400"
                     />
                   ))}
                 </div>
@@ -466,13 +468,13 @@ export default function AboutPage() {
                   &quot;{testimonial.content}&quot;
                 </p>
                 <div className="flex items-center gap-3 mt-5">
-                  <div className="w-11 h-11 bg-gray-200 rounded-full flex items-center justify-center">
-                    <span className="text-[15px] font-semibold text-[#3B3B3B]">
+                  <div className="w-11 h-11 bg-gradient-to-br from-primary-main to-primary-dark rounded-full flex items-center justify-center">
+                    <span className="text-[15px] font-semibold text-white">
                       {testimonial.name.charAt(0)}
                     </span>
                   </div>
                   <div>
-                    <p className="text-[15px] font-semibold text-[#3B3B3B]">{testimonial.name}</p>
+                    <p className="text-[15px] font-semibold text-navy-main">{testimonial.name}</p>
                     <p className="text-[13px] text-[#3B3B3B]/60">{testimonial.role}</p>
                   </div>
                 </div>
@@ -483,7 +485,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#3B3B3B]">
+      <section className="py-20 bg-gradient-to-r from-navy-main via-navy-main to-primary-dark">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -501,7 +503,7 @@ export default function AboutPage() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-7 py-4 rounded-full text-[15px] font-semibold transition-colors"
+                  className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-light text-white px-7 py-4 rounded-full text-[15px] font-semibold transition-colors"
                 >
                   Contact Us
                   <ArrowRight className="w-4 h-4" />
@@ -510,7 +512,7 @@ export default function AboutPage() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="tel:972-462-1882"
-                  className="inline-flex items-center gap-2 bg-white text-[#3B3B3B] px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
+                  className="inline-flex items-center gap-2 bg-white text-navy-main px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
                 >
                   (972) 462-1882
                 </Link>

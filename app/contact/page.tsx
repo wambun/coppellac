@@ -45,7 +45,7 @@ export default function ContactPage() {
     <div className="flex flex-col w-full">
       <Header />
 
-      {/* Hero Section - Heatfix style */}
+      {/* Hero Section - Navy gradient style */}
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
@@ -55,24 +55,25 @@ export default function ContactPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-main/95 via-navy-main/85 to-navy-main/70" />
         </div>
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10 py-20">
           <div className="max-w-[600px]">
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-primary-main font-semibold text-[14px] tracking-wide uppercase"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             >
-              — Contact Us
-            </motion.span>
+              <span className="w-2 h-2 bg-primary-main rounded-full animate-pulse" />
+              <span className="text-white/90 text-[14px] font-medium">Contact Us</span>
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-[#3B3B3B] mt-4 leading-[1.05] tracking-[-3px]"
+              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-white mt-4 leading-[1.05] tracking-[-3px]"
             >
               Get In Touch{' '}
               <span className="text-primary-main">Today.</span>
@@ -81,7 +82,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 text-[17px] text-[#3B3B3B]/70 leading-[1.7] max-w-[480px]"
+              className="mt-6 text-[17px] text-white/80 leading-[1.7] max-w-[480px]"
             >
               Have questions about your HVAC system? Need a quick repair, maintenance service, or a custom consultation? We&apos;re here to help.
             </motion.p>
@@ -93,7 +94,7 @@ export default function ContactPage() {
             >
               <Link
                 href="tel:972-462-1882"
-                className="inline-flex items-center gap-2 bg-[#3B3B3B] hover:bg-[#2a2a2a] text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
+                className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
               >
                 <Phone className="w-4 h-4" />
                 CALL (972) 462-1882
@@ -117,7 +118,7 @@ export default function ContactPage() {
               <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
                 — Contact Information
               </span>
-              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
+              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
                 Let&apos;s Talk About Your HVAC Needs
               </h2>
               <p className="mt-6 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
@@ -132,11 +133,11 @@ export default function ContactPage() {
                 className="mt-10 space-y-6"
               >
                 <motion.div variants={fadeInUp} className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-7 h-7 text-primary-main" />
+                  <div className="w-14 h-14 bg-primary-main rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Phone</h3>
+                    <h3 className="font-bold text-[17px] text-navy-main">Phone</h3>
                     <a
                       href="tel:972-462-1882"
                       className="text-primary-main hover:text-primary-dark text-[17px] font-medium"
@@ -148,11 +149,11 @@ export default function ContactPage() {
                 </motion.div>
 
                 <motion.div variants={fadeInUp} className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-7 h-7 text-primary-main" />
+                  <div className="w-14 h-14 bg-secondary-main rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Email</h3>
+                    <h3 className="font-bold text-[17px] text-navy-main">Email</h3>
                     <a
                       href="mailto:service@coppellac.com"
                       className="text-primary-main hover:text-primary-dark font-medium"
@@ -164,11 +165,11 @@ export default function ContactPage() {
                 </motion.div>
 
                 <motion.div variants={fadeInUp} className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-7 h-7 text-primary-main" />
+                  <div className="w-14 h-14 bg-navy-main rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Office Address</h3>
+                    <h3 className="font-bold text-[17px] text-navy-main">Office Address</h3>
                     <p className="text-[15px] text-[#3B3B3B]/70">
                       436 Southwestern Blvd.<br />
                       Coppell, Texas 75019 USA
@@ -186,17 +187,17 @@ export default function ContactPage() {
                 </motion.div>
 
                 <motion.div variants={fadeInUp} className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-primary-main/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-7 h-7 text-primary-main" />
+                  <div className="w-14 h-14 bg-primary-dark rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[17px] text-[#3B3B3B]">Business Hours</h3>
+                    <h3 className="font-bold text-[17px] text-navy-main">Business Hours</h3>
                     <p className="text-[15px] text-[#3B3B3B]/70">
                       Monday - Friday: 8:00 AM - 5:00 PM<br />
                       Saturday: 9:00 AM - 2:00 PM<br />
                       Sunday: Closed
                     </p>
-                    <p className="text-[14px] text-primary-main font-semibold mt-2">
+                    <p className="text-[14px] text-secondary-main font-semibold mt-2">
                       24/7 Emergency Service Available
                     </p>
                   </div>
@@ -210,9 +211,9 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-[#F6F7F9] rounded-[24px] p-8 lg:p-10"
+              className="bg-navy-main rounded-[24px] p-8 lg:p-10"
             >
-              <h3 className="text-[24px] font-bold text-[#3B3B3B] mb-6">Send Us a Message</h3>
+              <h3 className="text-[24px] font-bold text-white mb-6">Send Us a Message</h3>
 
               {formSubmitted ? (
                 <motion.div
@@ -220,9 +221,9 @@ export default function ContactPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12"
                 >
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-[20px] font-bold text-[#3B3B3B] mb-2">Thank You!</h3>
-                  <p className="text-[15px] text-[#3B3B3B]/70">
+                  <CheckCircle className="w-16 h-16 text-primary-main mx-auto mb-4" />
+                  <h3 className="text-[20px] font-bold text-white mb-2">Thank You!</h3>
+                  <p className="text-[15px] text-white/70">
                     We&apos;ve received your message and will get back to you within 24 hours.
                   </p>
                   <motion.button
@@ -241,7 +242,7 @@ export default function ContactPage() {
                       type="text"
                       placeholder="Full Name *"
                       required
-                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px]"
+                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-[16px] focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px] text-white placeholder:text-white/50"
                     />
                   </div>
                   <div>
@@ -249,7 +250,7 @@ export default function ContactPage() {
                       type="email"
                       placeholder="Email Address *"
                       required
-                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px]"
+                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-[16px] focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px] text-white placeholder:text-white/50"
                     />
                   </div>
                   <div>
@@ -257,12 +258,12 @@ export default function ContactPage() {
                       type="tel"
                       placeholder="Phone Number *"
                       required
-                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px]"
+                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-[16px] focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px] text-white placeholder:text-white/50"
                     />
                   </div>
                   <div>
                     <select
-                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px] text-[#3B3B3B]/60"
+                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-[16px] focus:ring-2 focus:ring-primary-main outline-none transition-all text-[15px] text-white/50"
                       defaultValue=""
                     >
                       <option value="" disabled>Select Service Type</option>
@@ -279,14 +280,14 @@ export default function ContactPage() {
                       placeholder="Tell us about your HVAC needs... *"
                       required
                       rows={5}
-                      className="w-full px-5 py-4 bg-white rounded-[16px] border-0 focus:ring-2 focus:ring-primary-main outline-none transition-all resize-none text-[15px]"
+                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-[16px] focus:ring-2 focus:ring-primary-main outline-none transition-all resize-none text-[15px] text-white placeholder:text-white/50"
                     />
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-primary-main hover:bg-primary-dark text-white rounded-full py-4 font-semibold text-[15px] transition-colors inline-flex items-center justify-center gap-2"
+                    className="w-full bg-primary-main hover:bg-primary-light text-white rounded-full py-4 font-semibold text-[15px] transition-colors inline-flex items-center justify-center gap-2"
                   >
                     Send Message
                     <ArrowRight className="w-4 h-4" />
@@ -299,7 +300,7 @@ export default function ContactPage() {
       </section>
 
       {/* Quick Call CTA */}
-      <section className="py-20 bg-primary-main">
+      <section className="py-20 bg-gradient-to-r from-secondary-main via-secondary-dark to-navy-main">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -310,17 +311,26 @@ export default function ContactPage() {
             <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-white leading-[1.1] tracking-[-2px]">
               Need Immediate Assistance?
             </h2>
-            <p className="mt-6 text-[17px] text-white/90 max-w-[600px] mx-auto leading-[1.7]">
+            <p className="mt-6 text-[17px] text-white/80 max-w-[600px] mx-auto leading-[1.7]">
               For emergencies, call us directly. Our team is available 24/7 to help with urgent HVAC issues.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="tel:972-462-1882"
-                  className="inline-flex items-center gap-2 bg-white text-primary-main px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
+                  className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-light text-white px-7 py-4 rounded-full text-[15px] font-semibold transition-colors"
                 >
                   <Phone className="w-5 h-5" />
                   Call (972) 462-1882
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  href="mailto:service@coppellac.com"
+                  className="inline-flex items-center gap-2 bg-white text-navy-main px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
+                >
+                  <Mail className="w-5 h-5" />
+                  Email Us
                 </Link>
               </motion.div>
             </div>
@@ -329,7 +339,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-[#F6F7F9]">
+      <section className="py-20 bg-gradient-to-b from-white to-[#F6F7F9]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -341,7 +351,7 @@ export default function ContactPage() {
             <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
               — Our Location
             </span>
-            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
               Find Us
             </h2>
           </motion.div>

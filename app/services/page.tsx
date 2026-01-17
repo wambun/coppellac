@@ -44,7 +44,7 @@ export default function ServicesPage() {
     <div className="flex flex-col w-full">
       <Header />
 
-      {/* Hero Section - Heatfix style */}
+      {/* Hero Section - Navy gradient style */}
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center pt-[72px]">
         <div className="absolute inset-0 z-0">
           <Image
@@ -54,24 +54,25 @@ export default function ServicesPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-main/95 via-navy-main/85 to-navy-main/70" />
         </div>
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10 py-20">
           <div className="max-w-[600px]">
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-primary-main font-semibold text-[14px] tracking-wide uppercase"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             >
-              — Our Services
-            </motion.span>
+              <span className="w-2 h-2 bg-primary-main rounded-full animate-pulse" />
+              <span className="text-white/90 text-[14px] font-medium">Our Services</span>
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-[#3B3B3B] mt-4 leading-[1.05] tracking-[-3px]"
+              className="text-[48px] md:text-[64px] lg:text-[72px] font-bold text-white mt-4 leading-[1.05] tracking-[-3px]"
             >
               Expert HVAC Services in{' '}
               <span className="text-primary-main">Coppell.</span>
@@ -80,7 +81,7 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 text-[17px] text-[#3B3B3B]/70 leading-[1.7] max-w-[480px]"
+              className="mt-6 text-[17px] text-white/80 leading-[1.7] max-w-[480px]"
             >
               At Coppell Heating and Air Conditioning, we specialize in providing comprehensive HVAC solutions for homes and businesses alike.
             </motion.p>
@@ -92,16 +93,14 @@ export default function ServicesPage() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-[#3B3B3B] hover:bg-[#2a2a2a] text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
+                className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:gap-3"
               >
                 REQUEST ESTIMATE
-                <span className="w-6 h-6 bg-primary-main rounded-full flex items-center justify-center">
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="tel:972-462-1882"
-                className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#3B3B3B] px-6 py-3.5 rounded-full text-[15px] font-semibold transition-colors border border-gray-200"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 text-white px-6 py-3.5 rounded-full text-[15px] font-semibold transition-colors"
               >
                 <Phone className="w-4 h-4" />
                 (972) 462-1882
@@ -124,7 +123,7 @@ export default function ServicesPage() {
             <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
               — What We Offer
             </span>
-            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
               Our Services
             </h2>
             <p className="mt-4 text-[16px] text-[#3B3B3B]/70 max-w-[600px] mx-auto">
@@ -156,21 +155,21 @@ export default function ServicesPage() {
                   />
                   {/* Discount Badge */}
                   {service.discount && (
-                    <div className="absolute top-4 right-4 bg-white rounded-xl px-3 py-2 shadow-md">
-                      <span className="text-[22px] font-bold text-[#3B3B3B]">{service.discount.replace('%', '')}</span>
-                      <span className="text-[14px] font-bold text-[#3B3B3B]">%</span>
-                      <p className="text-[11px] font-semibold text-primary-main">OFF</p>
+                    <div className="absolute top-4 right-4 bg-secondary-main rounded-xl px-3 py-2 shadow-md">
+                      <span className="text-[22px] font-bold text-white">{service.discount.replace('%', '')}</span>
+                      <span className="text-[14px] font-bold text-white">%</span>
+                      <p className="text-[11px] font-semibold text-white/80">OFF</p>
                     </div>
                   )}
                 </div>
                 <div className="p-5">
-                  <h3 className="text-[17px] font-bold text-[#3B3B3B] group-hover:text-primary-main transition-colors">{service.title}</h3>
+                  <h3 className="text-[17px] font-bold text-navy-main group-hover:text-primary-main transition-colors">{service.title}</h3>
                   <p className="mt-2 text-[14px] text-[#3B3B3B]/60 line-clamp-2">
                     {service.shortDescription}
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 mt-4 text-[14px] font-semibold text-[#3B3B3B] hover:text-primary-main transition-colors"
+                    className="inline-flex items-center gap-2 mt-4 text-[14px] font-semibold text-navy-main hover:text-primary-main transition-colors"
                   >
                     BOOK NOW
                     <span className="w-5 h-5 bg-primary-main rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -185,7 +184,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Details */}
-      <section className="py-20 bg-[#F6F7F9]">
+      <section className="py-20 bg-navy-main">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Content */}
@@ -198,10 +197,10 @@ export default function ServicesPage() {
               <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
                 — Why Choose Us
               </span>
-              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
+              <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-white mt-4 leading-[1.1] tracking-[-2px]">
                 Quality Service You Can Trust
               </h2>
-              <p className="mt-6 text-[16px] text-[#3B3B3B]/70 leading-[1.8]">
+              <p className="mt-6 text-[16px] text-white/70 leading-[1.8]">
                 It&apos;s our prerogative to provide the very best heating and cooling service. To that end, we are licensed, bonded, and insured. That means that when we work on your residential or commercial HVAC system, you will have the satisfaction of knowing that we are highly qualified.
               </p>
 
@@ -225,7 +224,7 @@ export default function ServicesPage() {
                     className="flex items-start gap-3"
                   >
                     <CheckCircle className="w-5 h-5 text-primary-main mt-0.5 flex-shrink-0" />
-                    <span className="text-[15px] text-[#3B3B3B]/80">{item}</span>
+                    <span className="text-[15px] text-white/80">{item}</span>
                   </motion.li>
                 ))}
               </motion.ul>
@@ -239,7 +238,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="rounded-[24px] overflow-hidden">
+              <div className="rounded-[24px] overflow-hidden border-4 border-white/20">
                 <Image
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&auto=format&fit=crop&q=80"
                   alt="HVAC technician"
@@ -254,7 +253,7 @@ export default function ServicesPage() {
       </section>
 
       {/* All Services List */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-white to-[#F6F7F9]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -263,10 +262,10 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-primary-main font-semibold text-[14px] tracking-wide uppercase">
+            <span className="text-secondary-main font-semibold text-[14px] tracking-wide uppercase">
               — Complete List
             </span>
-            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-[#3B3B3B] mt-4 leading-[1.1] tracking-[-2px]">
+            <h2 className="text-[36px] md:text-[44px] lg:text-[52px] font-bold text-navy-main mt-4 leading-[1.1] tracking-[-2px]">
               Full Service List
             </h2>
             <p className="mt-4 text-[16px] text-[#3B3B3B]/70 max-w-[600px] mx-auto">
@@ -285,10 +284,10 @@ export default function ServicesPage() {
               <motion.div
                 key={idx}
                 variants={fadeInUp}
-                className="flex items-center gap-3 bg-[#F6F7F9] rounded-[16px] p-4"
+                className="flex items-center gap-3 bg-white rounded-[16px] p-4 shadow-sm border border-gray-100"
               >
                 <CheckCircle className="w-5 h-5 text-primary-main flex-shrink-0" />
-                <span className="font-medium text-[15px] text-[#3B3B3B]">{service}</span>
+                <span className="font-medium text-[15px] text-navy-main">{service}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -296,7 +295,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#3B3B3B]">
+      <section className="py-20 bg-gradient-to-r from-secondary-main via-secondary-dark to-navy-main">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -314,7 +313,7 @@ export default function ServicesPage() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-dark text-white px-7 py-4 rounded-full text-[15px] font-semibold transition-colors"
+                  className="inline-flex items-center gap-2 bg-primary-main hover:bg-primary-light text-white px-7 py-4 rounded-full text-[15px] font-semibold transition-colors"
                 >
                   Get Free Estimate
                   <ArrowRight className="w-4 h-4" />
@@ -323,7 +322,7 @@ export default function ServicesPage() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="tel:972-462-1882"
-                  className="inline-flex items-center gap-2 bg-white text-[#3B3B3B] px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
+                  className="inline-flex items-center gap-2 bg-white text-navy-main px-7 py-4 rounded-full text-[15px] font-semibold transition-colors hover:bg-gray-100"
                 >
                   <Phone className="w-4 h-4" />
                   (972) 462-1882
