@@ -8,6 +8,7 @@ import { colors } from '@/data/config/colors.js';
 import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
+import { LocalBusinessSchema, ReviewsSchema } from '@/components/shared/StructuredData';
 
 // Heatfix uses Figtree as primary font
 const displayFont = Figtree({
@@ -125,6 +126,8 @@ export default function RootLayout({
       </head>
 
       <body className="flex flex-col bg-white text-black antialiased dark:bg-gray-950 dark:text-white min-h-screen">
+        <LocalBusinessSchema />
+        <ReviewsSchema />
         <ThemeProviders>
           <AnalyticsWrapper />
 
