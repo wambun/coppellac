@@ -1,5 +1,7 @@
+'use client';
+
 import { Analytics, AnalyticsConfig } from '@shipixen/pliny/analytics';
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 
 import { siteConfig } from '@/data/config/site.settings';
 
